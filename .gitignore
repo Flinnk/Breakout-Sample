@@ -1,0 +1,9 @@
+Intermediate/*
+Build/*
+Dependencies/Simple-Game-Engine/*
+
+*.VC.*
+
+vs/*
+Projects/Win32/Engine/.vs/
+Projects/Win32/Breakout/.vs/
