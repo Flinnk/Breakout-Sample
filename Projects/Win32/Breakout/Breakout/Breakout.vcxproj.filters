@@ -12,9 +12,36 @@
     <ClCompile Include="..\..\..\..\Source\App.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\GameScene.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Level.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Brick.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\GameObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\App.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Scene.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\GameScene.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Level.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Brick.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\GameObject.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

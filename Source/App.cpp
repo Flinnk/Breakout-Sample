@@ -8,7 +8,7 @@
 #include <Utils\Assert.h>
 #include <Utils\ResourceManager.h>
 #include <Renderer\SpriteRenderer.h>
-
+#include "GameScene.h"
 
 App::App() {}
 App::~App() {}
@@ -19,34 +19,33 @@ void App::OnInitialize()
 {
 	GraphicContext* GC = Engine::GetInstance().GetGraphicContext();
 	GC->Init(800, 600, "Breakout");
+	CurrentScene = new GameScene();
+	Engine::GetInstance().SetTargetFPS(60);
 }
 
 void App::OnBegin()
 {
 	Log("Begin");
+	CurrentScene->OnEnter();
 }
 
 void App::OnUpdate(float DeltaSeconds)
 {
-	if (Input::IsKeyPressed(KEY_E))
-	{
-		LogFormat("Key Pressed: %d", KEY_E);
-		ASSERT(Input::IsKeyPressed(KEY_E));
-
-	}
-	else
-	{
-		LogFormat("Update delta: %f", DeltaSeconds);
-	}
+	CurrentScene->OnUpdate(DeltaSeconds);
+	LogFormat("Update %d", Engine::GetInstance().GetFpsStat());
 }
 
 void App::OnRender(const SpriteRenderer* Renderer)
 {
-
+	CurrentScene->OnRender(Renderer);
 }
 
 
 void App::OnEnd()
 {
 	Log("End");
+	if (CurrentScene)
+		CurrentScene->OnExit();
+	delete CurrentScene;
+	CurrentScene = nullptr;
 }

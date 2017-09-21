@@ -81,10 +81,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\App.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Brick.cpp" />
+    <ClCompile Include="..\..\..\..\Source\GameObject.cpp" />
+    <ClCompile Include="..\..\..\..\Source\GameScene.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Level.cpp" />
     <ClCompile Include="..\..\..\..\Source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\App.h" />
+    <ClInclude Include="..\..\..\..\Source\Brick.h" />
+    <ClInclude Include="..\..\..\..\Source\GameObject.h" />
+    <ClInclude Include="..\..\..\..\Source\GameScene.h" />
+    <ClInclude Include="..\..\..\..\Source\Level.h" />
+    <ClInclude Include="..\..\..\..\Source\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
