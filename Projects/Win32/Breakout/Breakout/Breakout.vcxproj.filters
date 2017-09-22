@@ -24,6 +24,12 @@
     <ClCompile Include="..\..\..\..\Source\GameObject.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Paddle.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Ball.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\App.h">
@@ -42,6 +48,12 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\GameObject.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Paddle.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Ball.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

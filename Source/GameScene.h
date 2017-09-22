@@ -5,6 +5,7 @@
 #include "Level.h"
 #include <vector>
 
+
 class GameScene : public Scene {
 public:
 	GameScene();
@@ -18,7 +19,11 @@ private:
 
 	Level LoadedLevel;
 	const GameEngine::Texture *Background = nullptr;
+	class Paddle* Player = nullptr;
+	class Ball* BallObject = nullptr;
 	int CurrentLevel = 0;
+	
+	void CheckCollisions();
 };
 
 #endif

@@ -16,7 +16,7 @@ public:
 	GameObject();
 	GameObject(GameEngine::Vector2 pos, GameEngine::Vector2 size, const GameEngine::Texture *sprite, GameEngine::Vector3 color = GameEngine::Vector3(1.0f, 1.0f, 1.0f));
 
-	void Draw(const GameEngine::SpriteRenderer *renderer);
+	virtual void Draw(const GameEngine::SpriteRenderer *renderer);
 };
 
 #endif // !GAMEOBJECT_H

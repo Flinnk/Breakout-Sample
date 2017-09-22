@@ -20,7 +20,7 @@ public:
 	Brick(GameEngine::Vector2 pos, GameEngine::Vector2 size, const GameEngine::Texture *sprite, GameEngine::Vector3 color = GameEngine::Vector3(1.0f, 1.0f, 1.0f));
 	~Brick();
 	bool Destroyed = false;
-	bool IsDestroyable = false;
+	bool IsDestroyable = true;
 };
 
 #endif // !BRICK_H

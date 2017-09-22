@@ -73,6 +73,7 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 				}
 				else if (TileData[y][x] > BrickType::SOLID)
 				{
+					IsDestroyable = true;
 					switch (TileData[y][x])
 					{
 					case BrickType::BLUE:
