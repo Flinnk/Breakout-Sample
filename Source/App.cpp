@@ -20,7 +20,7 @@ void App::OnInitialize()
 	GraphicContext* GC = Engine::GetInstance().GetGraphicContext();
 	GC->Init(800, 600, "Breakout");
 	CurrentScene = new GameScene();
-	Engine::GetInstance().SetTargetFPS(60);
+	Engine::GetInstance().SetTargetFPS(120);
 }
 
 void App::OnBegin()
@@ -32,7 +32,7 @@ void App::OnBegin()
 void App::OnUpdate(float DeltaSeconds)
 {
 	CurrentScene->OnUpdate(DeltaSeconds);
-	LogFormat("Update %d", Engine::GetInstance().GetFpsStat());
+	LogFormat("Update %f", DeltaSeconds);
 }
 
 void App::OnRender(const SpriteRenderer* Renderer)

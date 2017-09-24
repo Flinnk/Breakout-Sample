@@ -89,6 +89,7 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 						Color = Vector3(1.0f, 0.5f, 0.0f);
 						break;
 					}
+					
 				}
 
 				Brick Object(Position, Size, Texture, Color);

@@ -24,6 +24,7 @@ private:
 	int CurrentLevel = 0;
 	
 	void CheckCollisions();
+	void BallReset();
 };
 
 #endif
