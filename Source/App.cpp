@@ -10,6 +10,7 @@
 #include <Renderer\SpriteRenderer.h>
 #include "GameScene.h"
 
+
 App::App() {}
 App::~App() {}
 
@@ -25,6 +26,7 @@ void App::OnInitialize()
 
 void App::OnBegin()
 {
+	
 	Log("Begin");
 	CurrentScene->OnEnter();
 }

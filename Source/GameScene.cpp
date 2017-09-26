@@ -46,6 +46,7 @@ GameScene::GameScene() {}
 
 void GameScene::OnEnter()
 {
+	//TODO: Make LoadResource always load from current directory +/resources/
 	Background = ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\background.png", "background");
 	ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\brick.png", "brick");
 	ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\paddle.png", "paddle");
