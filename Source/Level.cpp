@@ -3,6 +3,7 @@
 #include <fstream>
 #include <Utils\ResourceManager.h>
 #include <Math\Math.h>
+#include <Audio\SoundManager.h>
 
 using namespace GameEngine;
 
@@ -45,7 +46,7 @@ void Level::Draw(const SpriteRenderer *renderer)
 
 bool Level::IsCompleted()
 {
-	return false;
+	return RemainingBricks <= 0;
 }
 void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int LevelWidth, unsigned int LevelHeight)
 {
@@ -89,7 +90,8 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 						Color = Vector3(1.0f, 0.5f, 0.0f);
 						break;
 					}
-					
+					++RemainingBricks;
+
 				}
 
 				Brick Object(Position, Size, Texture, Color);
@@ -97,5 +99,20 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 				Bricks.push_back(Object);
 			}
 		}
+
+	}
+}
+
+void Level::DestroyBrick(Brick& CollisionedBrick)
+{
+	if (CollisionedBrick.IsDestroyable && !CollisionedBrick.Destroyed)
+	{
+		CollisionedBrick.Destroyed = true;
+		SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\Collect_Point_01.wav", false);
+		--RemainingBricks;
+	}
+	else if (!CollisionedBrick.IsDestroyable)
+	{
+		SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\click4.ogg", false);
 	}
 }

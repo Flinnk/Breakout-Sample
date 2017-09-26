@@ -7,6 +7,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include <Audio\SoundManager.h>
+#include <Utils\Log.h>
 
 using namespace GameEngine;
 
@@ -57,13 +58,27 @@ void GameScene::OnEnter()
 	Vector2 BallPosition = Player->Position + Vector2(PADDLE_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
 
 	BallObject = new Ball(BallPosition, BALL_RADIUS, ResourceManager::GetInstance().GetTexture("ball"), Vector3(1.0f, 1.0f, 1.0f), Vector2(200.0f, -700.0f));
-	LoadedLevel.Load("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Levels\\one.lvl", Size.x, Size.y * 0.5f);
+	LoadedLevel.Load(Levels[CurrentLevel], Size.x, Size.y * 0.5f);
 
-	SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\gba1complete.mp3",true);
+	SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\gba1complete.mp3", true);
 }
 void GameScene::OnUpdate(float DeltaTime)
 {
+
 	Vector2 ScreenSize = Engine::GetInstance().GetDisplaySize();
+
+	if (LoadedLevel.IsCompleted())
+	{
+		BallReset();
+		++CurrentLevel;
+		if (CurrentLevel < NUM_LEVELS) {
+			LoadedLevel.Load(Levels[CurrentLevel], ScreenSize.x, ScreenSize.y * 0.5f);
+		}
+		else {
+			Log("Finish"); //TODO: Temp
+			return;
+		}
+	}
 
 	float velocity = Player->Velocity.x * DeltaTime;
 
@@ -128,16 +143,7 @@ void GameScene::CheckCollisions()
 			CollisionData data = CheckCollision(Circle(BallObject->Position.x, BallObject->Position.y, BallObject->Radius), Rect(brick.Position.x, brick.Position.y, brick.Size.x, brick.Size.y));
 			if (data.Hit)
 			{
-				if (brick.IsDestroyable && !brick.Destroyed)
-				{
-					brick.Destroyed = true;
-					SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\Collect_Point_01.wav", false);
-				}
-				else if(!brick.IsDestroyable)
-				{
-					SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\click4.ogg", false);
-				}
-
+				LoadedLevel.DestroyBrick(brick);
 
 				CollisionDirection Direction = ObtainDirection(data.DifferenceVector);
 				if (Direction == LEFT || Direction == RIGHT)

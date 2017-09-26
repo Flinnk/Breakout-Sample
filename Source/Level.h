@@ -16,7 +16,11 @@ public:
 	void Draw(const GameEngine::SpriteRenderer *renderer);
 
 	bool IsCompleted();
+
+	void DestroyBrick(Brick& CollisionedBrick);
 private:
+
+	int RemainingBricks = 0;
 	void Init(std::vector<std::vector<unsigned int>> TileData, unsigned int LevelWidth, unsigned int LevelHeight);
 
 

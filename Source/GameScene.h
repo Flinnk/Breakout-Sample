@@ -5,6 +5,7 @@
 #include "Level.h"
 #include <vector>
 
+#define NUM_LEVELS 2
 
 class GameScene : public Scene {
 public:
@@ -25,6 +26,11 @@ private:
 	
 	void CheckCollisions();
 	void BallReset();
+
+	char* Levels[NUM_LEVELS] = {
+		"D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Levels\\one.lvl",
+		"D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Levels\\two.lvl"
+	};
 };
 
 #endif

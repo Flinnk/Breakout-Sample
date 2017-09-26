@@ -32,7 +32,6 @@ void App::OnBegin()
 void App::OnUpdate(float DeltaSeconds)
 {
 	CurrentScene->OnUpdate(DeltaSeconds);
-	LogFormat("Update %f", DeltaSeconds);
 }
 
 void App::OnRender(const SpriteRenderer* Renderer)

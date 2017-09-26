@@ -64,6 +64,14 @@
     <Link>
       <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>mkdir "..\..\..\..\Build\Win32\$(Configuration)\Resources"
+xcopy /Y /E "..\..\..\..\Resources" "..\..\..\..\Build\Win32\$(Configuration)\Resources"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -78,6 +86,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>mkdir "..\..\..\..\Build\Win32\$(Configuration)\Resources"
+xcopy /Y /E "..\..\..\..\Resources" "..\..\..\..\Build\Win32\$(Configuration)\Resources"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\App.cpp" />
