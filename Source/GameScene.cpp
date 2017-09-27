@@ -42,26 +42,35 @@ CollisionDirection ObtainDirection(Vector2 vector)
 	return (CollisionDirection)index;
 }
 
-GameScene::GameScene() {}
+GameScene::GameScene() 
+{
+	
+}
 
 void GameScene::OnEnter()
 {
-	//TODO: Make LoadResource always load from current directory +/resources/
-	Background = ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\background.png", "background");
-	ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\brick.png", "brick");
-	ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\paddle.png", "paddle");
-	ResourceManager::GetInstance().LoadTexture("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Textures\\ball.png", "ball");
+	
+
+	ResourceManager& RManager = ResourceManager::GetInstance();
+
+	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\one.lvl");
+	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\two.lvl");
+
+	Background = RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\background.png", "background");
+	RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\brick.png", "brick");
+	RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\paddle.png", "paddle");
+	RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\ball.png", "ball");
 
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
 
-	Player = new Paddle(Vector2((Size.x / 2) - (PADDLE_SIZE.x / 2), (Size.y - PADDLE_SIZE.y)), PADDLE_SIZE, ResourceManager::GetInstance().GetTexture("paddle"), Vector3(1.0f, 1.0f, 1.0f), Vector2(1000, 0));
+	Player = new Paddle(Vector2((Size.x / 2) - (PADDLE_SIZE.x / 2), (Size.y - PADDLE_SIZE.y)), PADDLE_SIZE, RManager.GetTexture("paddle"), Vector3(1.0f, 1.0f, 1.0f), Vector2(1000, 0));
 
 	Vector2 BallPosition = Player->Position + Vector2(PADDLE_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
 
-	BallObject = new Ball(BallPosition, BALL_RADIUS, ResourceManager::GetInstance().GetTexture("ball"), Vector3(1.0f, 1.0f, 1.0f), Vector2(200.0f, -700.0f));
-	LoadedLevel.Load(Levels[CurrentLevel], Size.x, Size.y * 0.5f);
+	BallObject = new Ball(BallPosition, BALL_RADIUS, RManager.GetTexture("ball"), Vector3(1.0f, 1.0f, 1.0f), Vector2(200.0f, -700.0f));
+	LoadedLevel.Load(Levels[CurrentLevel].c_str(), Size.x, Size.y * 0.5f);
 
-	SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\gba1complete.mp3", true);
+	SoundManager::GetInstance().PlaySound((RManager.GetResourceDirectory()+"Sound\\gba1complete.mp3").c_str(), true);
 }
 void GameScene::OnUpdate(float DeltaTime)
 {
@@ -72,8 +81,8 @@ void GameScene::OnUpdate(float DeltaTime)
 	{
 		BallReset();
 		++CurrentLevel;
-		if (CurrentLevel < NUM_LEVELS) {
-			LoadedLevel.Load(Levels[CurrentLevel], ScreenSize.x, ScreenSize.y * 0.5f);
+		if (CurrentLevel < Levels.size()) {
+			LoadedLevel.Load(Levels[CurrentLevel].c_str(), ScreenSize.x, ScreenSize.y * 0.5f);
 		}
 		else {
 			Log("Finish"); //TODO: Temp
@@ -186,7 +195,7 @@ void GameScene::CheckCollisions()
 		BallObject->Velocity = BallObject->Velocity.Normalize() * oldVelocity.Length();
 
 		BallObject->Velocity.y = -1 * std::abs(BallObject->Velocity.y);
-		SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\click4.ogg", false);
+		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory()+"Sound\\click4.ogg").c_str(), false);
 
 	}
 }

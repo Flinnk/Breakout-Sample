@@ -108,11 +108,11 @@ void Level::DestroyBrick(Brick& CollisionedBrick)
 	if (CollisionedBrick.IsDestroyable && !CollisionedBrick.Destroyed)
 	{
 		CollisionedBrick.Destroyed = true;
-		SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\Collect_Point_01.wav", false);
+		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory() + "Sound\\Collect_Point_01.wav").c_str(), false);
 		--RemainingBricks;
 	}
 	else if (!CollisionedBrick.IsDestroyable)
 	{
-		SoundManager::GetInstance().PlaySound("D:\\Desarrollo\\C-C++\\Breakout-Sample\\Resources\\Sound\\click4.ogg", false);
+		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory() + "Sound\\click4.ogg").c_str(), false);
 	}
 }
