@@ -4,6 +4,7 @@
 #include <Utils\ResourceManager.h>
 #include <Math\Math.h>
 #include <Audio\SoundManager.h>
+#include "Definitions.h"
 
 using namespace GameEngine;
 
@@ -36,7 +37,7 @@ void Level::Load(const char *FilePath, unsigned int LevelWidth, unsigned int Lev
 	}
 }
 
-void Level::Draw(const SpriteRenderer *renderer)
+void Level::Draw(const Renderer *renderer)
 {
 	for (Brick &Block : Bricks) {
 		if (!Block.Destroyed)
@@ -60,7 +61,7 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 	{
 		for (unsigned int x = 0; x < Width; ++x)
 		{
-			Vector2 Position(TileWidth * x, TileHeight * y);
+			Vector2 Position(TileWidth * x, (TileHeight * y)+ INFO_PANEL_HEIGHT);
 			Vector2 Size(TileWidth, TileHeight);
 
 			bool IsDestroyable = false;
@@ -103,16 +104,18 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 	}
 }
 
-void Level::DestroyBrick(Brick& CollisionedBrick)
+bool Level::DestroyBrick(Brick& CollisionedBrick)
 {
 	if (CollisionedBrick.IsDestroyable && !CollisionedBrick.Destroyed)
 	{
 		CollisionedBrick.Destroyed = true;
 		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory() + "Sound\\Collect_Point_01.wav").c_str(), false);
 		--RemainingBricks;
+		return true;
 	}
 	else if (!CollisionedBrick.IsDestroyable)
 	{
 		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory() + "Sound\\click4.ogg").c_str(), false);
+		return false;
 	}
 }

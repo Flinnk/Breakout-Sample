@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include <Core\Engine.h>
+#include "Definitions.h"
 
 Ball::Ball(GameEngine::Vector2 pos, float radius, const GameEngine::Texture *sprite, GameEngine::Vector3 color , GameEngine::Vector2 velocity) : GameObject(pos, GameEngine::Vector2(radius * 2, radius * 2),sprite,color)
 {
@@ -22,9 +23,9 @@ void Ball::ResolveMovement(float DeltaTime)
 		Velocity.x = -Velocity.x;
 		Position.x = ScreenSize.x - Size.x;
 	}
-	if (Position.y <= 0.0f)
+	if (Position.y <= INFO_PANEL_HEIGHT)
 	{
 		Velocity.y = -Velocity.y;
-		Position.y = 0.0f;
+		Position.y = INFO_PANEL_HEIGHT;
 	}
 }

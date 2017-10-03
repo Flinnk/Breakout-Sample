@@ -13,11 +13,11 @@ public:
 
 	void Load(const char *FilePath, unsigned int LevelWidth, unsigned int LevelHeight);
 
-	void Draw(const GameEngine::SpriteRenderer *renderer);
+	void Draw(const GameEngine::Renderer *renderer);
 
 	bool IsCompleted();
 
-	void DestroyBrick(Brick& CollisionedBrick);
+	bool DestroyBrick(Brick& CollisionedBrick);
 private:
 
 	int RemainingBricks = 0;

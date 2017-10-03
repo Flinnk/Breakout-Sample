@@ -109,6 +109,7 @@ xcopy /Y /E "..\..\..\..\Resources" "..\..\..\..\Build\Win32\$(Configuration)\Re
     <ClInclude Include="..\..\..\..\Source\App.h" />
     <ClInclude Include="..\..\..\..\Source\Ball.h" />
     <ClInclude Include="..\..\..\..\Source\Brick.h" />
+    <ClInclude Include="..\..\..\..\Source\Definitions.h" />
     <ClInclude Include="..\..\..\..\Source\GameObject.h" />
     <ClInclude Include="..\..\..\..\Source\GameScene.h" />
     <ClInclude Include="..\..\..\..\Source\Level.h" />

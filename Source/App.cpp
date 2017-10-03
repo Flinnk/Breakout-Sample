@@ -19,7 +19,7 @@ using namespace GameEngine;
 void App::OnInitialize()
 {
 	GraphicContext* GC = Engine::GetInstance().GetGraphicContext();
-	GC->Init(800, 600, "Breakout");
+	GC->Init(640, 528, "Breakout");
 	CurrentScene = new GameScene();
 	Engine::GetInstance().SetTargetFPS(120);
 }
@@ -36,7 +36,7 @@ void App::OnUpdate(float DeltaSeconds)
 	CurrentScene->OnUpdate(DeltaSeconds);
 }
 
-void App::OnRender(const SpriteRenderer* Renderer)
+void App::OnRender(const Renderer* Renderer)
 {
 	CurrentScene->OnRender(Renderer);
 }

@@ -9,7 +9,7 @@ GameObject::GameObject()
 GameObject::GameObject(Vector2 pos, Vector2 size, const Texture* sprite, Vector3 color)
 	: Position(pos), Size(size), Color(color), Rotation(0.0f), Sprite(sprite) { }
 
-void GameObject::Draw(const SpriteRenderer *Renderer)
+void GameObject::Draw(const Renderer *Renderer)
 {
 	Renderer->DrawTexture(Sprite, Position, Size, Rotation, Color);
 }

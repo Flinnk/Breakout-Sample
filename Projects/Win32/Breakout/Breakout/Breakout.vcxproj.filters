@@ -56,5 +56,8 @@
     <ClInclude Include="..\..\..\..\Source\Ball.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Definitions.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

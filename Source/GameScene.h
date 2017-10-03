@@ -10,7 +10,7 @@ public:
 	GameScene();
 	void OnEnter() override;
 	void OnUpdate(float DeltaTime) override;
-	void OnRender(const GameEngine::SpriteRenderer* Renderer) override;
+	void OnRender(const GameEngine::Renderer* Renderer) override;
 
 	void OnExit() override;
 	virtual ~GameScene();
@@ -18,10 +18,13 @@ private:
 
 	Level LoadedLevel;
 	const GameEngine::Texture *Background = nullptr;
+	const GameEngine::Texture *Panel = nullptr;
+
 	class Paddle* Player = nullptr;
 	class Ball* BallObject = nullptr;
 	int CurrentLevel = 0;
-	
+	int Score = 0;
+
 	void CheckCollisions();
 	void BallReset();
 

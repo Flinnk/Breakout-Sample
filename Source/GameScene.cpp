@@ -8,6 +8,8 @@
 #include "Ball.h"
 #include <Audio\SoundManager.h>
 #include <Utils\Log.h>
+#include "Definitions.h"
+
 
 using namespace GameEngine;
 
@@ -42,21 +44,20 @@ CollisionDirection ObtainDirection(Vector2 vector)
 	return (CollisionDirection)index;
 }
 
-GameScene::GameScene() 
+GameScene::GameScene()
 {
-	
+
 }
 
 void GameScene::OnEnter()
 {
-	
-
 	ResourceManager& RManager = ResourceManager::GetInstance();
 
 	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\one.lvl");
 	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\two.lvl");
 
 	Background = RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\background.png", "background");
+	Panel = RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\panel.png", "panel");
 	RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\brick.png", "brick");
 	RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\paddle.png", "paddle");
 	RManager.LoadTexture(RManager.GetResourceDirectory() + "Textures\\ball.png", "ball");
@@ -68,13 +69,14 @@ void GameScene::OnEnter()
 	Vector2 BallPosition = Player->Position + Vector2(PADDLE_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
 
 	BallObject = new Ball(BallPosition, BALL_RADIUS, RManager.GetTexture("ball"), Vector3(1.0f, 1.0f, 1.0f), Vector2(200.0f, -700.0f));
+	
+	Size.y -= INFO_PANEL_HEIGHT;
 	LoadedLevel.Load(Levels[CurrentLevel].c_str(), Size.x, Size.y * 0.5f);
 
-	SoundManager::GetInstance().PlaySound((RManager.GetResourceDirectory()+"Sound\\gba1complete.mp3").c_str(), true);
+	SoundManager::GetInstance().PlaySound((RManager.GetResourceDirectory() + "Sound\\gba1complete.mp3").c_str(), true);
 }
 void GameScene::OnUpdate(float DeltaTime)
 {
-
 	Vector2 ScreenSize = Engine::GetInstance().GetDisplaySize();
 
 	if (LoadedLevel.IsCompleted())
@@ -82,6 +84,7 @@ void GameScene::OnUpdate(float DeltaTime)
 		BallReset();
 		++CurrentLevel;
 		if (CurrentLevel < Levels.size()) {
+			ScreenSize.y -= INFO_PANEL_HEIGHT;
 			LoadedLevel.Load(Levels[CurrentLevel].c_str(), ScreenSize.x, ScreenSize.y * 0.5f);
 		}
 		else {
@@ -127,6 +130,7 @@ void GameScene::OnUpdate(float DeltaTime)
 	if (BallObject->Position.y >= ScreenSize.y)
 	{
 		BallReset();
+		Score -= SCORE_DECREASE;
 	}
 }
 
@@ -153,7 +157,10 @@ void GameScene::CheckCollisions()
 			CollisionData data = CheckCollision(Circle(BallObject->Position.x, BallObject->Position.y, BallObject->Radius), Rect(brick.Position.x, brick.Position.y, brick.Size.x, brick.Size.y));
 			if (data.Hit)
 			{
-				LoadedLevel.DestroyBrick(brick);
+				if (LoadedLevel.DestroyBrick(brick)) 
+				{
+					Score += SCORE_INCREASE;
+				}
 
 				CollisionDirection Direction = ObtainDirection(data.DifferenceVector);
 				if (Direction == LEFT || Direction == RIGHT)
@@ -195,19 +202,25 @@ void GameScene::CheckCollisions()
 		BallObject->Velocity = BallObject->Velocity.Normalize() * oldVelocity.Length();
 
 		BallObject->Velocity.y = -1 * std::abs(BallObject->Velocity.y);
-		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory()+"Sound\\click4.ogg").c_str(), false);
+		SoundManager::GetInstance().PlaySound((ResourceManager::GetInstance().GetResourceDirectory() + "Sound\\click4.ogg").c_str(), false);
 
 	}
 }
 
-void GameScene::OnRender(const GameEngine::SpriteRenderer* Renderer)
+void GameScene::OnRender(const GameEngine::Renderer* Renderer)
 {
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
-
-	Renderer->DrawTexture(Background, Vector2(0, 0), Size, 0, Vector3(1.0, 1.0, 1.0));
+	Size.y -= INFO_PANEL_HEIGHT;
+	Vector2 PanelSize(Size.x, INFO_PANEL_HEIGHT);
+	Renderer->DrawTexture(Panel, Vector2(0, 0), PanelSize, 0, Vector3(1.0, 1.0, 1.0));
+	Renderer->DrawTexture(Background, Vector2(0, INFO_PANEL_HEIGHT), Size, 0, Vector3(1.0, 1.0, 1.0));
 	LoadedLevel.Draw(Renderer);
 	BallObject->Draw(Renderer);
 	Player->Draw(Renderer);
+
+	Renderer->DrawText(std::string("Level: " + std::to_string(CurrentLevel + 1)), 272, 12, 1.0f, Vector3(1.0f, 1.0f, 1.0f));
+	Renderer->DrawText(std::string("Score: " + std::to_string(Score)), 24, 12, 1.0f, Vector3(1.0f, 1.0f, 1.0f));
+
 }
 
 void GameScene::OnExit()
