@@ -218,8 +218,8 @@ void GameScene::OnRender(const GameEngine::Renderer* Renderer)
 	BallObject->Draw(Renderer);
 	Player->Draw(Renderer);
 
-	Renderer->DrawText(std::string("Level: " + std::to_string(CurrentLevel + 1)), 272, 12, 1.0f, Vector3(1.0f, 1.0f, 1.0f));
-	Renderer->DrawText(std::string("Score: " + std::to_string(Score)), 24, 12, 1.0f, Vector3(1.0f, 1.0f, 1.0f));
+	Renderer->DrawText(std::string("Level: " + std::to_string(CurrentLevel + 1)), 272, 12, 0.3f, Vector3(1.0f, 1.0f, 1.0f));
+	Renderer->DrawText(std::string("Score: " + std::to_string(Score)), 24, 12, 0.3f, Vector3(1.0f, 1.0f, 1.0f));
 
 }
 

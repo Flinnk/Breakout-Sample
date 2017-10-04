@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\..\..\Source\Ball.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\IntroScene.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\App.h">
@@ -57,6 +60,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Definitions.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\IntroScene.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

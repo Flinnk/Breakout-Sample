@@ -15,11 +15,17 @@ public:
 
 	virtual void OnInitialize() override;
 	virtual void OnBegin() override;
+	virtual void OnBeginFrame() override;
 	virtual void OnUpdate(float DeltaSeconds) override;
 	virtual void OnRender(const class GameEngine::Renderer* Renderer) override;
+	virtual void OnEndFrame() override;
+
 	virtual void OnEnd() override;
+
+	void LoadScene(Scene* NewScene);
 private:
 	Scene* CurrentScene = nullptr;
+	Scene* NextScene = nullptr;
 };
 
 #endif // !APP_H

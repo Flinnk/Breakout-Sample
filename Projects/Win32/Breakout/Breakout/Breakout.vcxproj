@@ -101,6 +101,7 @@ xcopy /Y /E "..\..\..\..\Resources" "..\..\..\..\Build\Win32\$(Configuration)\Re
     <ClCompile Include="..\..\..\..\Source\Brick.cpp" />
     <ClCompile Include="..\..\..\..\Source\GameObject.cpp" />
     <ClCompile Include="..\..\..\..\Source\GameScene.cpp" />
+    <ClCompile Include="..\..\..\..\Source\IntroScene.cpp" />
     <ClCompile Include="..\..\..\..\Source\Level.cpp" />
     <ClCompile Include="..\..\..\..\Source\main.cpp" />
     <ClCompile Include="..\..\..\..\Source\Paddle.cpp" />
@@ -112,6 +113,7 @@ xcopy /Y /E "..\..\..\..\Resources" "..\..\..\..\Build\Win32\$(Configuration)\Re
     <ClInclude Include="..\..\..\..\Source\Definitions.h" />
     <ClInclude Include="..\..\..\..\Source\GameObject.h" />
     <ClInclude Include="..\..\..\..\Source\GameScene.h" />
+    <ClInclude Include="..\..\..\..\Source\IntroScene.h" />
     <ClInclude Include="..\..\..\..\Source\Level.h" />
     <ClInclude Include="..\..\..\..\Source\Paddle.h" />
     <ClInclude Include="..\..\..\..\Source\Scene.h" />

@@ -8,7 +8,8 @@
 #include <Utils\Assert.h>
 #include <Utils\ResourceManager.h>
 #include <Renderer\SpriteRenderer.h>
-#include "GameScene.h"
+#include "IntroScene.h"
+#include <Audio\SoundManager.h>
 
 
 App::App() {}
@@ -20,15 +21,23 @@ void App::OnInitialize()
 {
 	GraphicContext* GC = Engine::GetInstance().GetGraphicContext();
 	GC->Init(640, 528, "Breakout");
-	CurrentScene = new GameScene();
+	CurrentScene = new IntroScene();
 	Engine::GetInstance().SetTargetFPS(120);
 }
 
 void App::OnBegin()
 {
-	
-	Log("Begin");
 	CurrentScene->OnEnter();
+}
+
+void App::OnBeginFrame()
+{
+	if (NextScene != nullptr)
+	{
+		CurrentScene = NextScene;
+		CurrentScene->OnEnter();
+		NextScene = nullptr;
+	}
 }
 
 void App::OnUpdate(float DeltaSeconds)
@@ -41,6 +50,17 @@ void App::OnRender(const Renderer* Renderer)
 	CurrentScene->OnRender(Renderer);
 }
 
+void App::OnEndFrame()
+{
+	if (NextScene != nullptr)
+	{
+		CurrentScene->OnExit();
+		delete CurrentScene;
+		CurrentScene = nullptr;
+		SoundManager::GetInstance().StopAll();
+	}
+}
+
 
 void App::OnEnd()
 {
@@ -49,4 +69,9 @@ void App::OnEnd()
 		CurrentScene->OnExit();
 	delete CurrentScene;
 	CurrentScene = nullptr;
+}
+
+void App::LoadScene(Scene* NewScene)
+{
+	NextScene = NewScene;
 }
