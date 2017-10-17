@@ -1,14 +1,8 @@
 #include "IntroScene.h"
-#include <Utils\ResourceManager.h>
-#include <Core\Engine.h>
-#include <Math\Math.h>
-#include <Audio\SoundManager.h>
-#include <Core\Input.h>
-#include <Utils\Log.h>
+#include "Breakout.h"
 #include "App.h"
 #include "GameScene.h"
 
-using namespace GameEngine;
 
 IntroScene::IntroScene()
 {
@@ -32,7 +26,7 @@ void IntroScene::OnUpdate(float DeltaTime)
 	}
 }
 
-void IntroScene::OnRender(const GameEngine::Renderer* Renderer)
+void IntroScene::OnRender(const Renderer* Renderer)
 {
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
 	Renderer->DrawTexture(Background, Vector2(0, 0), Size, 0, Vector3(1.0, 1.0, 1.0));

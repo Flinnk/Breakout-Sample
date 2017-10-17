@@ -1,15 +1,7 @@
 #include "App.h"
-#include <Math\Math.h>
 #include <iostream>
-#include <Renderer\IGraphicContext.h>
-#include <Core\Engine.h>
-#include <Core\Input.h>
-#include <Utils\Log.h>
-#include <Utils\Assert.h>
-#include <Utils\ResourceManager.h>
-#include <Renderer\SpriteRenderer.h>
 #include "IntroScene.h"
-#include <Audio\SoundManager.h>
+
 
 
 App::App() {}

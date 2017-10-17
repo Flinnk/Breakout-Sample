@@ -1,17 +1,8 @@
 #include "GameScene.h"
-#include <Math\Math.h>
-#include <Core\Engine.h>
-#include <Core\Input.h>
-#include <Utils\ResourceManager.h>
-#include <Physics\SandboxPhysics.h>
+#include "Breakout.h"
 #include "Paddle.h"
 #include "Ball.h"
-#include <Audio\SoundManager.h>
-#include <Utils\Log.h>
 #include "Definitions.h"
-
-
-using namespace GameEngine;
 
 
 enum CollisionDirection {
@@ -207,7 +198,7 @@ void GameScene::CheckCollisions()
 	}
 }
 
-void GameScene::OnRender(const GameEngine::Renderer* Renderer)
+void GameScene::OnRender(const Renderer* Renderer)
 {
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
 	Size.y -= INFO_PANEL_HEIGHT;

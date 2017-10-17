@@ -1,9 +1,8 @@
 #include "Paddle.h"
-#include <Core\Engine.h>
-#include <Core\Input.h>
-using namespace GameEngine;
+#include "Breakout.h"
 
-Paddle::Paddle(GameEngine::Vector2 pos, GameEngine::Vector2 size, const GameEngine::Texture *sprite, GameEngine::Vector3 color, GameEngine::Vector2 velocity) : GameObject(pos,size,sprite,color)
+
+Paddle::Paddle(Vector2 pos, Vector2 size, const Texture *sprite, Vector3 color, Vector2 velocity) : GameObject(pos,size,sprite,color)
 {
 	Velocity = velocity;
 }

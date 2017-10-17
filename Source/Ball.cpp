@@ -1,8 +1,8 @@
 #include "Ball.h"
-#include <Core\Engine.h>
+#include "Breakout.h"
 #include "Definitions.h"
 
-Ball::Ball(GameEngine::Vector2 pos, float radius, const GameEngine::Texture *sprite, GameEngine::Vector3 color , GameEngine::Vector2 velocity) : GameObject(pos, GameEngine::Vector2(radius * 2, radius * 2),sprite,color)
+Ball::Ball(Vector2 pos, float radius, const Texture *sprite, Vector3 color , Vector2 velocity) : GameObject(pos, Vector2(radius * 2, radius * 2),sprite,color)
 {
 	Velocity = velocity;
 	Radius = BALL_RADIUS;
@@ -10,7 +10,7 @@ Ball::Ball(GameEngine::Vector2 pos, float radius, const GameEngine::Texture *spr
 
 void Ball::ResolveMovement(float DeltaTime) 
 {
-	GameEngine::Vector2 ScreenSize = GameEngine::Engine::GetInstance().GetDisplaySize();
+	Vector2 ScreenSize = Engine::GetInstance().GetDisplaySize();
 
 	Position += Velocity * DeltaTime;
 	if (Position.x <= 0.0f)

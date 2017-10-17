@@ -1,12 +1,9 @@
 #include "Level.h"
 #include <sstream>
 #include <fstream>
-#include <Utils\ResourceManager.h>
-#include <Math\Math.h>
-#include <Audio\SoundManager.h>
+#include "Breakout.h"
 #include "Definitions.h"
 
-using namespace GameEngine;
 
 Level::Level() {}
 Level::~Level()

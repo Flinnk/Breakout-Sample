@@ -103,12 +103,13 @@ xcopy /Y /E "..\..\..\..\Resources" "..\..\..\..\Build\Win32\$(Configuration)\Re
     <ClCompile Include="..\..\..\..\Source\GameScene.cpp" />
     <ClCompile Include="..\..\..\..\Source\IntroScene.cpp" />
     <ClCompile Include="..\..\..\..\Source\Level.cpp" />
-    <ClCompile Include="..\..\..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Breakout.cpp" />
     <ClCompile Include="..\..\..\..\Source\Paddle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\App.h" />
     <ClInclude Include="..\..\..\..\Source\Ball.h" />
+    <ClInclude Include="..\..\..\..\Source\Breakout.h" />
     <ClInclude Include="..\..\..\..\Source\Brick.h" />
     <ClInclude Include="..\..\..\..\Source\Definitions.h" />
     <ClInclude Include="..\..\..\..\Source\GameObject.h" />

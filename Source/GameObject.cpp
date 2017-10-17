@@ -1,7 +1,6 @@
 #include "GameObject.h"
+#include "Breakout.h"
 
-
-using namespace GameEngine;
 
 GameObject::GameObject()
 	: Position(0, 0), Size(1, 1), Color(1.0f, 1.0f, 1.0f), Rotation(0.0f), Sprite() { }
