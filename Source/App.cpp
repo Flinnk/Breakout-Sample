@@ -1,7 +1,7 @@
 #include "App.h"
 #include <Math\Math.h>
 #include <iostream>
-#include <Core\GraphicContext.h>
+#include <Renderer\IGraphicContext.h>
 #include <Core\Engine.h>
 #include <Core\Input.h>
 #include <Utils\Log.h>
@@ -19,7 +19,7 @@ using namespace GameEngine;
 
 void App::OnInitialize()
 {
-	GraphicContext* GC = Engine::GetInstance().GetGraphicContext();
+	IGraphicContext* GC = Engine::GetInstance().GetGraphicContext();
 	GC->Init(640, 528, "Breakout");
 	CurrentScene = new IntroScene();
 	Engine::GetInstance().SetTargetFPS(120);

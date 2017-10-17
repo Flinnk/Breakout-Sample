@@ -9,10 +9,4 @@ namespace GameEngine {
 }
 
 
-int main() 
-{
-	GameEngine::Engine::GetInstance().Run();
-	return 0;
-}
-
 
