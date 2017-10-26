@@ -12,7 +12,7 @@ using namespace GameEngine;
 void App::OnInitialize()
 {
 	IGraphicContext* GC = Engine::GetInstance().GetGraphicContext();
-	GC->Init(640, 528, "Breakout");
+	GC->Init("Breakout",DisplayMode::WINDOWED, 640, 528);
 	CurrentScene = new IntroScene();
 	Engine::GetInstance().SetTargetFPS(120);
 }
