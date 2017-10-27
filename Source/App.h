@@ -17,7 +17,7 @@ public:
 	virtual void OnBegin() override;
 	virtual void OnBeginFrame() override;
 	virtual void OnUpdate(float DeltaSeconds) override;
-	virtual void OnRender(const class GameEngine::Renderer* Renderer) override;
+	virtual void OnRender(class GameEngine::Renderer* Renderer) override;
 	virtual void OnEndFrame() override;
 
 	virtual void OnEnd() override;

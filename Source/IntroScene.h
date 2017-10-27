@@ -8,7 +8,7 @@ public:
 	IntroScene();
 	void OnEnter() override;
 	void OnUpdate(float DeltaTime) override;
-	void OnRender(const GameEngine::Renderer* Renderer) override;
+	void OnRender(GameEngine::Renderer* Renderer) override;
 
 	void OnExit() override;
 	virtual ~IntroScene();

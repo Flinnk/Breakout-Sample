@@ -3,7 +3,6 @@
 #include "IntroScene.h"
 
 
-
 App::App() {}
 App::~App() {}
 
@@ -37,7 +36,7 @@ void App::OnUpdate(float DeltaSeconds)
 	CurrentScene->OnUpdate(DeltaSeconds);
 }
 
-void App::OnRender(const Renderer* Renderer)
+void App::OnRender(Renderer* Renderer)
 {
 	CurrentScene->OnRender(Renderer);
 }

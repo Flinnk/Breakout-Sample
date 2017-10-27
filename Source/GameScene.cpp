@@ -198,7 +198,7 @@ void GameScene::CheckCollisions()
 	}
 }
 
-void GameScene::OnRender(const Renderer* Renderer)
+void GameScene::OnRender(Renderer* Renderer)
 {
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
 	Size.y -= INFO_PANEL_HEIGHT;

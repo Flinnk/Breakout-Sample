@@ -26,7 +26,7 @@ void IntroScene::OnUpdate(float DeltaTime)
 	}
 }
 
-void IntroScene::OnRender(const Renderer* Renderer)
+void IntroScene::OnRender(Renderer* Renderer)
 {
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
 	Renderer->DrawTexture(Background, Vector2(0, 0), Size, 0, Vector3(1.0, 1.0, 1.0));
