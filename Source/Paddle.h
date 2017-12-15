@@ -3,7 +3,7 @@
 #define PADDLE_H
 
 #include "GameObject.h"
-#include <Math\Math.h>
+#include <Engine\Math\Math.h>
 const GameEngine::Vector2 PADDLE_SIZE = GameEngine::Vector2(100, 20);
 
 class Paddle : public GameObject

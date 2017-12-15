@@ -86,7 +86,7 @@ void GameScene::OnUpdate(float DeltaTime)
 
 	float velocity = Player->Velocity.x * DeltaTime;
 
-	if (Input::IsKeyPressed(KEY_A))
+	if (Input::IsKeyPressed(Keyboard::A))
 	{
 		if (Player->Position.x >= 0)
 		{
@@ -96,7 +96,7 @@ void GameScene::OnUpdate(float DeltaTime)
 		}
 	}
 
-	if (Input::IsKeyPressed(KEY_D))
+	if (Input::IsKeyPressed(Keyboard::D))
 	{
 		if (Player->Position.x <= ScreenSize.x - Player->Size.x)
 		{
@@ -106,7 +106,7 @@ void GameScene::OnUpdate(float DeltaTime)
 		}
 	}
 
-	if (Input::IsKeyPressed(KEY_SPACE))
+	if (Input::IsKeyPressed(Keyboard::SPACE))
 	{
 		BallObject->StickToPaddle = false;
 	}

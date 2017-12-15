@@ -45,13 +45,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)\..\..\..\Build\Win32\$(Configuration)\</OutDir>
     <IntDir>..\..\..\..\Intermediate\$(Configuration)\</IntDir>
-    <IncludePath>..\..\..\..\Dependencies\Simple-Game-Engine\Source;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\Dependencies\Simple-Game-Engine\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\..\Dependencies\Simple-Game-Engine\Build\Win32\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\..\..\..\Build\Win32\$(Configuration)\</OutDir>
     <IntDir>..\..\..\..\Intermediate\$(Configuration)\</IntDir>
-    <IncludePath>..\..\..\..\Dependencies\Simple-Game-Engine\Source;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\Dependencies\Simple-Game-Engine\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\..\Dependencies\Simple-Game-Engine\Build\Win32\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

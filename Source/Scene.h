@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <Renderer\Renderer.h>
+#include <Engine\Renderer\Renderer.h>
 
 class Scene {
 

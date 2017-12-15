@@ -19,7 +19,7 @@ void IntroScene::OnEnter()
 
 void IntroScene::OnUpdate(float DeltaTime)
 {
-	if (Input::IsKeyPressed(KEY_ENTER))
+	if (Input::IsKeyPressed(Keyboard::ENTER))
 	{
 		App* AppInstance = static_cast<App*>(Engine::GetInstance().GetRunningApplicationInstance());
 		AppInstance->LoadScene(new GameScene());

@@ -1,9 +1,9 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include <Math\Math.h>
-#include <Renderer\Texture.h>
-#include <Renderer\Renderer.h>
+#include <Engine\Math\Math.h>
+#include <Engine\Graphics\Texture.h>
+#include <Engine\Renderer\Renderer.h>
 class GameObject 
 {
 public:
