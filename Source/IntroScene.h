@@ -3,7 +3,7 @@
 
 #include "Scene.h"
 
-class IntroScene : public Scene {
+class IntroScene : public Breakout::Scene {
 public:
 	IntroScene();
 	void OnEnter() override;

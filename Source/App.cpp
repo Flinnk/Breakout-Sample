@@ -62,7 +62,7 @@ void App::OnEnd()
 	CurrentScene = nullptr;
 }
 
-void App::LoadScene(Scene* NewScene)
+void App::LoadScene(Breakout::Scene* NewScene)
 {
 	NextScene = NewScene;
 }

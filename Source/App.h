@@ -2,8 +2,7 @@
 #define APP_H
 
 #include <Engine\Engine.h> 
-
-class Scene;
+#include "Scene.h"
 
 class App : public GameEngine::Application 
 {
@@ -22,10 +21,10 @@ public:
 
 	virtual void OnEnd() override;
 
-	void LoadScene(Scene* NewScene);
+	void LoadScene(Breakout::Scene* NewScene);
 private:
-	Scene* CurrentScene = nullptr;
-	Scene* NextScene = nullptr;
+	Breakout::Scene* CurrentScene = nullptr;
+	Breakout::Scene* NextScene = nullptr;
 };
 
 #endif // !APP_H

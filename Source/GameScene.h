@@ -5,7 +5,7 @@
 #include "Level.h"
 #include <vector>
 
-class GameScene : public Scene {
+class GameScene : public Breakout::Scene {
 public:
 	GameScene();
 	void OnEnter() override;

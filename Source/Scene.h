@@ -1,18 +1,22 @@
-#ifndef SCENE_H
-#define SCENE_H
+#ifndef BREAKOUT_SCENE_H
+#define BREAKOUT_SCENE_H
 
 #include <Engine\Renderer\Renderer.h>
 
-class Scene {
+namespace Breakout 
+{
 
-public:
+	class Scene {
 
-	virtual ~Scene() {};
-	virtual void OnEnter() = 0;
-	virtual void OnUpdate(float DeltaTime) = 0;
-	virtual void OnRender(GameEngine::Renderer* Renderer)=0;
-	virtual void OnExit() = 0;
+	public:
 
-};
+		virtual ~Scene() {};
+		virtual void OnEnter() = 0;
+		virtual void OnUpdate(float DeltaTime) = 0;
+		virtual void OnRender(GameEngine::Renderer* Renderer) = 0;
+		virtual void OnExit() = 0;
 
-#endif // !SCENE_H
+	};
+}
+
+#endif // !BREAKOUT_SCENE_H
