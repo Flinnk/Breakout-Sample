@@ -3,6 +3,8 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Definitions.h"
+#include <Engine\Core\Transform.h>
+#include <Engine\Renderer\Camera.h>
 
 
 enum CollisionDirection {
@@ -200,7 +202,17 @@ void GameScene::CheckCollisions()
 
 void GameScene::OnRender(Renderer* Renderer)
 {
+	Transform CameraTransform;
+	Camera CameraData;
+	CameraData.NearPlane = -1.0f;
+	CameraData.FarPlane = 1000.0f;
+	CameraData.Mode = CameraMode::ORTHOGRAPHIC;
+	CameraData.FieldOfView = 90.0f;
+	Renderer->SetCameraData(&CameraData);
+	Renderer->SetCameraTransform(&CameraTransform);
+
 	Vector2 Size = Engine::GetInstance().GetDisplaySize();
+
 	Size.y -= INFO_PANEL_HEIGHT;
 	Vector2 PanelSize(Size.x, INFO_PANEL_HEIGHT);
 	Renderer->DrawTexture(Panel, Vector2(0, 0), PanelSize, 0, Vector3(1.0, 1.0, 1.0));
