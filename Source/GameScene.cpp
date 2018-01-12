@@ -53,6 +53,7 @@ void GameScene::OnEnter()
 
 	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\one.lvl");
 	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\two.lvl");
+	Levels.push_back(RManager.GetResourceDirectory() + "Levels\\three.lvl");
 
 	Background = RManager.LoadTexture("Textures\\background.png");
 	Panel = RManager.LoadTexture("Textures\\panel.png");
@@ -287,7 +288,7 @@ void GameScene::RenderGameOverState(GameEngine::Renderer* Renderer)
 
 	Renderer->End();
 	Renderer->DrawText(std::string("Game Over!"), 120, 50, 0.8f, Vector3(1.0f, 1.0f, 1.0f));
-	Renderer->DrawText(std::string("Level: " + std::to_string(CurrentLevel)), 230, 160, 0.5f, Vector3(1.0f, 1.0f, 1.0f));
+	Renderer->DrawText(std::string("Level: " + std::to_string(CurrentLevel + 1)), 230, 160, 0.5f, Vector3(1.0f, 1.0f, 1.0f));
 	Renderer->DrawText(std::string("Score: " + std::to_string(Score)), 230, 240, 0.5f, Vector3(1.0f, 1.0f, 1.0f));
 	Renderer->DrawText(std::string("Press R to play again"), 150, 500, 0.4f, Vector3(1.0f, 1.0f, 1.0f));
 }
