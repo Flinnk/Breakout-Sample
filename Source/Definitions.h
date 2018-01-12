@@ -4,7 +4,7 @@
 #define INFO_PANEL_HEIGHT 48 
 #define SCORE_INCREASE 20
 #define SCORE_DECREASE 100
-
+#define INITIAL_CREDITS 10
 
 #endif // !DEFINITIONS_H
 

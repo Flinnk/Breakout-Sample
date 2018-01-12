@@ -2,7 +2,6 @@
 #define INTRO_SCENE_H
 
 #include "Scene.h"
-
 class IntroScene : public Breakout::Scene {
 public:
 	IntroScene();
@@ -15,6 +14,7 @@ public:
 private:
 
 	const GameEngine::Texture *Background = nullptr;
+	class GameEngine::CameraComponent* RenderCamera = nullptr;
 };
 
 #endif

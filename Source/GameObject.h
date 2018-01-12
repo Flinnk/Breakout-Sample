@@ -10,6 +10,7 @@ public:
 	GameEngine::Vector2   Position, Size;
 	GameEngine::Vector3   Color;
 	float     Rotation;
+	int DrawOrder = 0;
 
 	const GameEngine::Texture* Sprite = nullptr;
 

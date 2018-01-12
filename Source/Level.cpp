@@ -48,17 +48,22 @@ bool Level::IsCompleted()
 }
 void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int LevelWidth, unsigned int LevelHeight)
 {
+	RemainingBricks = 0;
+	Vector2 Size = Engine::GetInstance().GetDisplaySize();
 	unsigned int Height = TileData.size();
 	unsigned int Width = TileData[0].size();
 	float TileWidth = LevelWidth / static_cast<float>(Width);
 	float TileHeight = LevelHeight / Height;
-	const Texture* Texture = ResourceManager::GetInstance().GetTexture("brick");
+	const Texture* Texture = ResourceManager::GetInstance().GetTexture("Textures\\brick.png");
+
+	Size.y -= INFO_PANEL_HEIGHT+TileHeight;
+
 
 	for (unsigned int y = 0; y < Height; ++y)
 	{
 		for (unsigned int x = 0; x < Width; ++x)
 		{
-			Vector2 Position(TileWidth * x, (TileHeight * y)+ INFO_PANEL_HEIGHT);
+			Vector2 Position(TileWidth * x, Size.y - (TileHeight * y));
 			Vector2 Size(TileWidth, TileHeight);
 
 			bool IsDestroyable = false;
@@ -93,6 +98,7 @@ void Level::Init(std::vector<std::vector<unsigned int>> TileData, unsigned int L
 				}
 
 				Brick Object(Position, Size, Texture, Color);
+				Object.DrawOrder = 3;
 				Object.IsDestroyable = IsDestroyable;
 				Bricks.push_back(Object);
 			}
